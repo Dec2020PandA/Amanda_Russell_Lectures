@@ -41,9 +41,59 @@ class SLL{
         }
         return this;
     }
+
+    contains(value){
+        var runner = this.head;
+        while(runner !== null){
+            if(runner.value == value){
+                return true;
+            }
+            runner = runner.next;
+        }
+        return false;
+    }
+
+    //function that returns the number of nodes in the list
+    length(){
+        var counter = 0;
+        var runner = this.head;
+        while(runner !== null){
+            counter++;
+            runner = runner.next;
+        }
+        return counter;
+        // console.log(counter);
+        // return this;
+    }
+
+    //What determines if a node is the "last" node?
+    // return the value of the last node
+    back(){
+        if(this.head == null){
+            console.log("Empty List");
+            return null;
+        }
+        var runner = this.head;
+        while(runner.next !== null){
+            runner = runner.next;
+        }
+        return runner.value;
+    }
 }
 
 var my_sll = new SLL();
 my_sll.displayList();
+console.log(my_sll.back());
 my_sll.addToFront("David").addToFront("Amanda").addToFront("Michelle").displayList();
+console.log(my_sll.contains("Michelle"));
+console.log(my_sll.contains("Bob"));
+console.log(my_sll.length());
+console.log(my_sll.back());
 
+
+// var x = 1;
+// var y = '1';
+// console.log(x === y);
+
+// == and != are looser comparisons (value only)
+// === and !== are strict comparisons (value, datatype, etc)
